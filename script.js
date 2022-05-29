@@ -25,20 +25,21 @@ startButton.addEventListener('click', () => {
 let start = false;
 
 const showWinner = () => {
+  console.log(houses[1].winningMessage);
   if (winningIndex == 0) {
-    winner.innerHTML = 'RUBY WINS';
+    winner.innerHTML = ' ' + houses[0].winningMessage;
     winner.style.backgroundColor = '#c11c22';
   }
   if (winningIndex == 1) {
-    winner.innerHTML = 'SAPPHIRE WINS';
+    winner.innerHTML = ' ' + houses[1].winningMessage;
     winner.style.backgroundColor = '#1271b5';
   }
   if (winningIndex == 2) {
-    winner.innerHTML = 'AMBER WINS';
+    winner.innerHTML = ' ' + houses[2].winningMessage;
     winner.style.backgroundColor = '#e46725';
   }
   if (winningIndex == 3) {
-    winner.innerHTML = 'PEARL WINS';
+    winner.innerHTML = ' ' + houses[3].winningMessage;
     winner.style.backgroundColor = '#000000';
   }
 
@@ -60,6 +61,7 @@ const houses = [
     difference: 0,
     currentNumber: 0,
     winner: false,
+    winningMessage: '',
   },
   {
     houseReference: sapphirePoints,
@@ -67,6 +69,7 @@ const houses = [
     difference: 0,
     currentNumber: 0,
     winner: false,
+    winningMessage: '',
   },
   {
     houseReference: amberPoints,
@@ -74,6 +77,7 @@ const houses = [
     difference: 0,
     currentNumber: 0,
     winner: false,
+    winningMessage: '',
   },
   {
     houseReference: pearlPoints,
@@ -81,6 +85,7 @@ const houses = [
     difference: 0,
     currentNumber: 0,
     winner: false,
+    winningMessage: '',
   },
 ];
 
@@ -91,7 +96,6 @@ const findWinner = () => {
   let entry = houses[0].totalPoints;
   for (let i = 1; i < houses.length; i++) {
     if (entry < houses[i].totalPoints) {
-      console.log('True');
       winningIndex = i;
       largestScore = i;
       entry = houses[i].totalPoints;
@@ -102,10 +106,16 @@ const findWinner = () => {
 fetch('https://arcane-reaches-66470.herokuapp.com/get')
   .then((response) => response.json())
   .then((data) => {
+    console.log(data);
     houses[1].totalPoints = +data[0].points;
     houses[0].totalPoints = +data[1].points;
     houses[2].totalPoints = +data[2].points;
     houses[3].totalPoints = +data[3].points;
+
+    houses[1].winningMessage = data[0].message;
+    houses[0].winningMessage = data[1].message;
+    houses[2].winningMessage = data[2].message;
+    houses[3].winningMessage = data[3].message;
 
     startButtonContainer.style.display = 'block';
     findWinner();
@@ -118,7 +128,6 @@ let finished;
 
 const gameInterval = setInterval(() => {
   if (startGameAfterFetch) {
-    console.log(winningIndex);
     finished = 0;
     houses.forEach((house) => {
       if (start) {
