@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/x-icon" href="/SSIS__logo.png">
+    <title>House Points</title>
+</head>
+
+<body>
+    <div id="start-button-container" class="start-button-container">
+        <div class="start-button">
+            <div class="wrap">
+                <button id='start-button' class="button">START</button>
+            </div>
+        </div>
+    </div>
+
+
+    <!--InnerHTML dependent on JS-->
+    <div class="winner" id="winner"></div>
+
+    <!--Background logo.  Might need to be centered for cellphones-->
+    <div class="logo">
+        <img class='logo-ssis' src="/SSIS__logo.png" alt="" srcset="">
+    </div>
+
+
+    <!--The four containers for the four houses.  The '0' in house points is filler and never used-->
+    <div class="houses-container">
+        <div class="Ruby flex">
+            <div class="house-header">
+                <img class="house-icon scale" src="/rubyDark.jpg" alt="" srcset="">
+            </div>
+            <div class="house-points" id="ruby-points">
+                0
+            </div>
+
+        </div>
+        <div class="Pearl flex">
+            <div class="house-header">
+                <img class="house-icon" src="/pearlDark.jpg" alt="" srcset="">
+            </div>
+            <div class="house-points" id="pearl-points">
+                0
+            </div>
+
+        </div>
+        <div class="Sapphire flex">
+            <div class="house-header">
+                <img class="house-icon" src="/sapphireDark.jpg" alt="" srcset="">
+            </div>
+            <div class="house-points" id="sapphire-points">
+                0
+            </div>
+
+        </div>
+        <div class="Amber flex">
+            <div class="house-header">
+                <img class="house-icon" src="/amberDark.jpg" alt="" srcset="">
+            </div>
+            <div class="house-points" id="amber-points">
+                0
+            </div>
+
+        </div>
+    </div>
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
